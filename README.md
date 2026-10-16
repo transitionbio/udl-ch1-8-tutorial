@@ -2,15 +2,15 @@
 
 A three-session tutorial on chapters 1–8 of Simon J.D. Prince's *Understanding Deep Learning* (MIT Press; free at [udlbook.github.io](https://udlbook.github.io/udlbook/)), written for the Transition Bio ML reading group.
 
-Each session is about **20 minutes of slides and 60–70 minutes of hands-on puzzles** in Colab. The notebooks derive the book's maths step by step and rebuild each idea from scratch in NumPy before switching to PyTorch. Each step comes with auto-checked puzzles set in a meerkat field station. All data are synthetic and generated inside the notebooks, so every answer can be checked.
+Each session is a short deck (7–9 slides, about 20 minutes) followed by **60–70 minutes of hands-on puzzles** in Colab. The notebooks derive the book's maths step by step and rebuild each idea from scratch in NumPy before switching to PyTorch. Each step comes with auto-checked puzzles set in a meerkat field station. All data are synthetic and generated inside the notebooks, so every answer can be checked.
 
 ## Sessions
 
-| # | Topic | Chapters | Notebook | Slides | Points |
-|---|---|---|---|---|---|
-| 1 | Models | 1–4 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_S1_Models_Ch1-4.ipynb) | [deck](slides/TBio_UDL_S1_Models_Ch1-4.pptx) | 28 |
-| 2 | Losses and training | 5–6 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_S2_Losses_Training_Ch5-6.ipynb) | [deck](slides/TBio_UDL_S2_Losses_Training_Ch5-6.pptx) | 21 |
-| 3 | Backprop and performance (+ capstone) | 7–8 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_S3_Backprop_Performance_Ch7-8.ipynb) | [deck](slides/TBio_UDL_S3_Backprop_Performance_Ch7-8.pptx) | 23 |
+| # | Topic | Chapters | Notebook | Slides |
+|---|---|---|---|---|
+| 1 | Models | 1–4 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_S1_Models_Ch1-4.ipynb) | [deck](slides/TBio_UDL_S1_Models_Ch1-4.pptx) |
+| 2 | Losses and training | 5–6 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_S2_Losses_Training_Ch5-6.ipynb) | [deck](slides/TBio_UDL_S2_Losses_Training_Ch5-6.pptx) |
+| 3 | Backprop and performance (+ capstone) | 7–8 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_S3_Backprop_Performance_Ch7-8.ipynb) | [deck](slides/TBio_UDL_S3_Backprop_Performance_Ch7-8.pptx) |
 
 > **Private repo:** the Colab badges work after you authorise GitHub in Colab (File → Open notebook → GitHub → tick *Include private repos*). Or download the `.ipynb` and use File → Upload notebook.
 
@@ -23,12 +23,12 @@ Each session is about **20 minutes of slides and 60–70 minutes of hands-on puz
 
 | | |
 |---|---|
-| 🧩 ⭐ / ⭐⭐ / ⭐⭐⭐ | Puzzles worth 1 / 2 / 3 points. Fill in the `TODO`, then run the 🧪 check cell |
-| 🔑 | Hidden solution cell (double-click). **Peeking halves the points.** Run it if stuck so later cells still work |
-| 🏆 | Medal challenges (bronze / silver / gold) |
+| 🧩 ⭐ / ⭐⭐ / ⭐⭐⭐ | Puzzles: quick / medium / stretch. Fill in the `TODO`, then run the 🧪 check cell |
+| 🔑 | Hidden solution cell (double-click). Have a go first; run it if stuck so later cells still work |
+| 🏆 | Open challenges with bronze / silver / gold targets to aim for |
 | 📦 | Sessions 2–3: a carry-over cell re-creates what's needed from earlier sessions |
 
-`scoreboard()` at the end gives a rank in the mob (🐣 Pup → 👑 Dominant Female). The series total is **72 points**.
+`progress()` at the end shows each person which puzzles they've solved and which are left. It's private to them: there are no scores or rankings, and nothing is recorded or shared.
 
 **Facilitator tips:** each notebook's intro lists suggested minutes per part and the *stretch* puzzles to leave for homework if time runs short. CPU-only Colab is fine; each notebook executes end to end in a few minutes.
 

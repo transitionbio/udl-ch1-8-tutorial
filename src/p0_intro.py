@@ -50,20 +50,20 @@ All datasets are **synthetic**. They're generated in this notebook so that we kn
 |---|---|
 | 📖 | Recap of the chapter's maths, with the equations derived properly |
 | 💻 | We build it **from scratch in NumPy** first; PyTorch only appears once you've earned it |
-| 🧩 ⭐ / ⭐⭐ / ⭐⭐⭐ | Puzzle worth 1 / 2 / 3 points. Fill in the `TODO`, then run the 🧪 check cell |
-| 🔑 | Hidden solution cell. Double-click to open it. **Peeking halves your points**, so be honest! |
-| 🏆 | Open challenge with bronze / silver / gold medals |
+| 🧩 ⭐ / ⭐⭐ / ⭐⭐⭐ | Puzzle: quick / medium / stretch. Fill in the `TODO`, then run the 🧪 check cell |
+| 🔑 | Hidden solution cell. Double-click to open it. Have a go first; it's there when you need it |
+| 🏆 | Open challenge with bronze / silver / gold targets to aim for |
 
 > **Important:** later cells use the functions you write. If you get stuck, **run the 🔑 solution cell** (you don't have to read it) so the rest of the notebook still works.
 {prev}
-### 🗺️ This session (≈ 70 min hands-on, {INFO['maxpts']} points available)
+### 🗺️ This session (≈ 70 min hands-on)
 | | | Suggested time |
 |---|---|---|
 {CONTENTS}
 
-⏱ **Short on time?** Skip the stretch puzzles **{INFO['stretch']}** in the room and finish them afterwards; they still count.
+⏱ **Short on time?** Skip the stretch puzzles **{INFO['stretch']}** in the room and finish them afterwards; they're good practice to finish afterwards.
 
-At the end, `scoreboard()` gives you your rank in the mob for this session: 🐣 Pup → 🍼 Babysitter → 🦂 Scorpion Hunter → 🔭 Sentinel → 👑 Dominant Female. Note your points; the series total is out of **72**.
+At the end, `progress()` shows which puzzles you've solved and which are left. It's just for you; nothing is recorded or shared.
 
 *Book figures and problem numbers are cited as e.g. "Fig 3.3" and "P3.8".*
 """)
@@ -87,18 +87,16 @@ plt.rcParams.update({
                                          TB["purple"], TB["red"], TB["lblue"], TB["lgreen"]]),
     "font.size": 10.5, "axes.titleweight": "bold"})
 
-# ---------------- score keeper ----------------
-_SCORE, _PEEKED, _MAXPTS = {}, set(), {}
-SESSION, SESSION_MAX = __SESSION__, __MAXPTS__
-RANKS = [(0, "🐣 Pup"), (0.15 * SESSION_MAX, "🍼 Babysitter"), (0.4 * SESSION_MAX, "🦂 Scorpion Hunter"),
-         (0.65 * SESSION_MAX, "🔭 Sentinel"), (0.85 * SESSION_MAX, "👑 Dominant Female: you run this mob")]
+# ---------------- progress tracker (private to you; nothing is shared) ----------------
+_SOLVED, _PEEKED, _SEEN = set(), set(), set()
+SESSION = __SESSION__
 
 def peek(pid):
     _PEEKED.add(pid)
 
-def check(pid, pts, test, ok_msg="", hint=""):
-    """Run `test` (a zero-arg function returning True/False) and award points."""
-    _MAXPTS[pid] = pts
+def check(pid, stars, test, ok_msg="", hint=""):
+    """Run `test` (a zero-arg function returning True/False) and report the result."""
+    _SEEN.add(pid)
     try:
         ok = bool(test())
     except NotImplementedError:
@@ -109,18 +107,16 @@ def check(pid, pts, test, ok_msg="", hint=""):
         if hint: print("   💡 Hint:", hint)
         return
     if ok:
-        got = pts / 2 if pid in _PEEKED else pts
-        _SCORE[pid] = max(_SCORE.get(pid, 0), got)
-        tag = "  (peeked: half points)" if pid in _PEEKED else ""
-        print(f"✅ Puzzle {pid} solved! +{got:g} pt{'s' if got != 1 else ''}{tag}  {ok_msg}")
+        _SOLVED.add(pid)
+        print(f"✅ Puzzle {pid} solved!  {ok_msg}")
     else:
         print(f"❌ Puzzle {pid}: not quite.", ("💡 " + hint) if hint else "")
 
-def scoreboard():
-    total = sum(_SCORE.values())
-    rank = [r for t, r in RANKS if total >= t][-1]
-    print(f"🏅 Session {SESSION} score: {total:g} / {SESSION_MAX} points from {len(_SCORE)} puzzles   →   Rank: {rank}")
-    return total
+def progress():
+    own = sorted(_SOLVED - _PEEKED); helped = sorted(_SOLVED & _PEEKED); todo = sorted(_SEEN - _SOLVED)
+    print(f"🐾 Session {SESSION}: {len(_SOLVED)} of {len(_SEEN)} puzzles solved "
+          f"({len(own)} on your own, {len(helped)} after opening the solution).")
+    if todo: print("   Still to do:", ", ".join(todo))
 
 def close(a, b, tol=1e-6):
     a, b = np.asarray(a, float), np.asarray(b, float)
@@ -148,4 +144,4 @@ try:
 except ImportError:
     HAS_TORCH = False
 print("Setup complete 🐾  | numpy", np.__version__, "| torch available:", HAS_TORCH)
-'''.replace('__SESSION__', str(S)).replace('__MAXPTS__', str(INFO['maxpts'])), form=True)
+'''.replace('__SESSION__', str(S)), form=True)

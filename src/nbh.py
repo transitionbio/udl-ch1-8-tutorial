@@ -22,7 +22,7 @@ def code(s, form=False):
 
 
 def _sol_cell(pid, s):
-    body = (f"#@title 🔑 Solution {pid} — double-click to peek (peeking halves the points!)\n"
+    body = (f"#@title 🔑 Solution {pid} — double-click to peek (have a go first!)\n"
             f"peek('{pid}')\n" + _clean(s))
     c = nbf.v4.new_code_cell(body)
     c.metadata["cellView"] = "form"

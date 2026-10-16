@@ -6,12 +6,10 @@ nxt = {1: "**Session 2 · Losses and training (Ch 5–6):** where do loss functi
        3: "**Next up · Chapter 9 (Regularization):** why do over-parameterised networks generalise at all?"}[S]
 md(r'''
 ---
-# 🏁 Session scoreboard
+# 🏁 Your progress
 ''')
 code(r'''
-total = scoreboard()
-print(f"\nPuzzles attempted: {len(_MAXPTS)} | points available this session: {sum(_MAXPTS.values())} | peeked at: {sorted(_PEEKED) or 'none 🎉'}")
-print("Write your score down: the series total is out of 72.")
+progress()
 ''')
 extra = ""
 if S == 3:
