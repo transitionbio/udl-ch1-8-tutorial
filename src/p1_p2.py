@@ -259,7 +259,9 @@ print("The generative fit minimises HORIZONTAL errors, so its inverted line is s
       "The two only agree when the points are perfectly collinear (correlation = ±1).")
 ''')
 
-code(r'''
+import nbh
+if nbh.SESSION != 0:
+  code(r'''
 #@title 🎛️ Optional: beat the computer by hand (sliders; needs ipywidgets, which Colab has)
 try:
     from ipywidgets import interact, FloatSlider

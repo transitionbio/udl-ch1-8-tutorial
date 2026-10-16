@@ -75,6 +75,17 @@ Conventions (match the book's eq 7.24):
 $\mathbf{f}_0=\boldsymbol\beta_0+\boldsymbol\Omega_0\mathbf{x}$, $\;\mathbf{h}_k=a[\mathbf{f}_{k-1}]$, $\;\mathbf{f}_k=\boldsymbol\beta_k+\boldsymbol\Omega_k\mathbf{h}_k$, and the output is $\mathbf{f}_K$.
 ''')
 
+code(r'''
+# 💻 Random initialisation for any layer sizes (we'll revisit the variance choice in Part 7)
+def init_params(dims, sigma2=None, rng=np.random.default_rng(0)):
+    """dims = [Di, D1, ..., DK, Do]. Normal weights (He variance 2/D_in by default), zero biases."""
+    betas, omegas = [], []
+    for d_in, d_out in zip(dims[:-1], dims[1:]):
+        s2 = 2.0 / d_in if sigma2 is None else sigma2
+        omegas.append(rng.normal(0, np.sqrt(s2), (d_out, d_in))); betas.append(np.zeros((d_out, 1)))
+    return betas, omegas
+''')
+
 exercise("4.2",
 r'''
 def deep_forward(x, betas, omegas, act=relu):
@@ -83,13 +94,6 @@ def deep_forward(x, betas, omegas, act=relu):
     # TODO
     raise NotImplementedError
 
-def init_params(dims, sigma2=None, rng=np.random.default_rng(0)):
-    """dims = [Di, D1, ..., DK, Do]. Normal weights (He variance 2/D_in by default), zero biases."""
-    betas, omegas = [], []
-    for d_in, d_out in zip(dims[:-1], dims[1:]):
-        s2 = 2.0 / d_in if sigma2 is None else sigma2
-        omegas.append(rng.normal(0, np.sqrt(s2), (d_out, d_in))); betas.append(np.zeros((d_out, 1)))
-    return betas, omegas
 ''',
 r'''
 def _t42():

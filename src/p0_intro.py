@@ -3,6 +3,7 @@ from nbh import md, code
 import nbh
 S = nbh.SESSION
 INFO = {
+ 0: dict(name="Chapters 1–8 in an hour", chapters="1–8", maxpts=0, contents=[], stretch="Challenges 3 and 6"),
  1: dict(name="Models", chapters="1–4", maxpts=28,
          contents=[("1", "Introduction", "Ch 1", "supervised, unsupervised and reinforcement learning", 10),
                    ("2", "Supervised learning", "Ch 2", "the Great Pup Weigh-in", 15),
@@ -23,10 +24,60 @@ SERIES = "\n".join(
     f"| {'**' if k == S else ''}Session {k}{'**' if k == S else ''} | {nm} | Ch {ch} |"
     for k, nm, ch in [(1, "Models", "1–4"), (2, "Losses and training", "5–6"), (3, "Backprop and performance", "7–8")])
 CONTENTS = "\n".join(f"| Part {p} | **{t}** ({c}): {d} | ~{m} min |" for p, t, c, d, m in INFO["contents"])
-prev = {1: "", 2: "\n> 📦 **Coming from Session 1?** The hidden *carry-over* cell after Setup re-creates everything this session needs from earlier parts, so you don't need to re-run old notebooks.\n",
+prev = {0: "", 1: "", 2: "\n> 📦 **Coming from Session 1?** The hidden *carry-over* cell after Setup re-creates everything this session needs from earlier parts, so you don't need to re-run old notebooks.\n",
         3: "\n> 📦 **Coming from Sessions 1–2?** The hidden *carry-over* cell after Setup re-creates everything this session needs from earlier parts (e.g. `deep_forward` from Part 4), so you don't need to re-run old notebooks.\n"}[S]
 
-md(f"""
+ONE_HOUR = r"""
+# 🐾 Deep Learning in the Kalahari
+## *Understanding Deep Learning*, chapters 1–8 in one hour
+
+**Transition Bio · ML Reading Group**
+
+A one-hour, hands-on tour of chapters 1–8 of Simon J.D. Prince's **_Understanding Deep Learning_** (MIT Press; free at [udlbook.github.io](https://udlbook.github.io/udlbook/)). We follow the book's notation, square brackets and all: $\mathbf{y} = \mathbf{f}[\mathbf{x}, \boldsymbol\phi]$.
+
+### ⏱️ The hour
+| Time | What |
+|---|---|
+| 0–12 min | Slides: the big picture, one idea per chapter |
+| 12–55 min | **This notebook**: the core puzzle path below |
+| 55–60 min | Wrap-up and questions |
+
+### 🦦 The story
+You've just joined a field station in the Kalahari that studies a wild meerkat mob. The station has a lot of data and no deep-learning expert, so you're it. All datasets are **synthetic**: they're generated right here, so every answer can be checked automatically.
+
+### 🧭 How it works
+| Symbol | Meaning |
+|---|---|
+| 📖 | Recap of the chapter's maths. Skim it; it's there to come back to |
+| 💻 | Demo code: just run it and look at the plot |
+| 🧩 | **Core puzzle**: fill in the `TODO`, then run the 🧪 check cell |
+| 🏆 | Challenge with bronze / silver / gold targets (do these if you have time) |
+| 🔑 | Hidden solution. Have a go first; run it if stuck so later cells still work |
+| ⚙️ | Ready-made helper: just run it |
+
+> **Tip:** start with *Runtime → Run all*. Every TODO will report "still a TODO" until you fill it in, and everything else just works. Then go top to bottom through the puzzles.
+
+### 🗺️ The core path (≈ 40 min)
+| Part | Chapter | Puzzles | Time |
+|---|---|---|---|
+| 1 | Introduction | read only | 1 min |
+| 2 | Supervised learning | 2.1 gradient of the least squares loss | 3 min |
+| 3 | Shallow networks | 3.1 joints & slopes · 🏆 dig the burrow | 8 min |
+| 4 | Deep networks | 4.1 predict the folds | 3 min |
+| 5 | Loss functions | 5.3 BCE gradient · 5.4 stable softmax · 5.6 which way is the burrow? | 9 min |
+| 6 | Fitting models | 6.4 momentum / Nesterov / Adam · 🏆 race to the burrow | 8 min |
+| 7 | Gradients & init | 7.1 backprop by hand | 6 min |
+| 8 | Measuring performance | 8.1 · 8.4 (quick questions) | 2 min |
+
+⏱ **Short on time?** Skip the 🏆 challenges first. At the end, `progress()` shows what you've solved; it's just for you, and nothing is recorded or shared. The full three-session version of this tutorial, with 35 puzzles and a capstone, is in the repo's `extended/` folder.
+
+*Book figures and problem numbers are cited as e.g. "Fig 3.3" and "P3.8".*
+"""
+
+if S == 0:
+    md(ONE_HOUR)
+else:
+  md(f"""
 # 🐾 Deep Learning in the Kalahari · Session {S} of 3
 ## *Understanding Deep Learning*, chapters {INFO['chapters']}: {INFO['name'].lower()}
 
@@ -114,7 +165,7 @@ def check(pid, stars, test, ok_msg="", hint=""):
 
 def progress():
     own = sorted(_SOLVED - _PEEKED); helped = sorted(_SOLVED & _PEEKED); todo = sorted(_SEEN - _SOLVED)
-    print(f"🐾 Session {SESSION}: {len(_SOLVED)} of {len(_SEEN)} puzzles solved "
+    print(f"🐾 {len(_SOLVED)} of {len(_SEEN)} puzzles solved "
           f"({len(own)} on your own, {len(helped)} after opening the solution).")
     if todo: print("   Still to do:", ", ".join(todo))
 
