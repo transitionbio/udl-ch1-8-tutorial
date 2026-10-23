@@ -1,32 +1,5 @@
 from nbh import md, code
 
-import nbh
-S = nbh.SESSION
-INFO = {
- 0: dict(name="Chapters 1–8 in an hour", chapters="1–8", maxpts=0, contents=[], stretch="Challenges 3 and 6"),
- 1: dict(name="Models", chapters="1–4", maxpts=28,
-         contents=[("1", "Introduction", "Ch 1", "supervised, unsupervised and reinforcement learning", 10),
-                   ("2", "Supervised learning", "Ch 2", "the Great Pup Weigh-in", 15),
-                   ("3", "Shallow neural networks", "Ch 3", "digging burrows with ReLUs", 25),
-                   ("4", "Deep neural networks", "Ch 4", "folding the dune sea", 20)],
-         stretch="2.3, 3.4, 4.4"),
- 2: dict(name="Losses and training", chapters="5–6", maxpts=21,
-         contents=[("5", "Loss functions", "Ch 5", "sentinels, alarm calls, scorpions and lost burrows", 35),
-                   ("6", "Fitting models", "Ch 6", "race to the burrow (GD, SGD, momentum, Adam)", 35)],
-         stretch="5.2, 5.6, 6.3"),
- 3: dict(name="Backprop and performance", chapters="7–8", maxpts=23,
-         contents=[("7", "Gradients and initialization", "Ch 7", "backprop by hand and whispers down the burrow", 25),
-                   ("8", "Measuring performance", "Ch 8", "bias, variance, double descent and the curse of dimensionality", 30),
-                   ("9", "Capstone", "Ch 2–8", "from meerkats to molecules (a toy condensate predictor)", 15)],
-         stretch="7.4, 8.5 and Challenge 8"),
-}[S]
-SERIES = "\n".join(
-    f"| {'**' if k == S else ''}Session {k}{'**' if k == S else ''} | {nm} | Ch {ch} |"
-    for k, nm, ch in [(1, "Models", "1–4"), (2, "Losses and training", "5–6"), (3, "Backprop and performance", "7–8")])
-CONTENTS = "\n".join(f"| Part {p} | **{t}** ({c}): {d} | ~{m} min |" for p, t, c, d, m in INFO["contents"])
-prev = {0: "", 1: "", 2: "\n> 📦 **Coming from Session 1?** The hidden *carry-over* cell after Setup re-creates everything this session needs from earlier parts, so you don't need to re-run old notebooks.\n",
-        3: "\n> 📦 **Coming from Sessions 1–2?** The hidden *carry-over* cell after Setup re-creates everything this session needs from earlier parts (e.g. `deep_forward` from Part 4), so you don't need to re-run old notebooks.\n"}[S]
-
 ONE_HOUR = r"""
 # 🐾 Deep Learning in the Kalahari
 ## *Understanding Deep Learning*, chapters 1–8 in one hour
@@ -69,55 +42,12 @@ You've just joined a field station in the Kalahari that studies a wild meerkat m
 | 7 | Gradients & init | 7.1 backprop by hand | 6 min |
 | 8 | Measuring performance | 8.1 · 8.4 (quick questions) | 2 min |
 
-⏱ **Short on time?** Skip the 🏆 challenges first. At the end, `progress()` shows what you've solved; it's just for you, and nothing is recorded or shared. The full three-session version of this tutorial, with 35 puzzles and a capstone, is in the repo's `extended/` folder.
+⏱ **Short on time?** Skip the 🏆 challenges first. At the end, `progress()` shows what you've solved; it's just for you, and nothing is recorded or shared.
 
 *Book figures and problem numbers are cited as e.g. "Fig 3.3" and "P3.8".*
 """
 
-if S == 0:
-    md(ONE_HOUR)
-else:
-  md(f"""
-# 🐾 Deep Learning in the Kalahari · Session {S} of 3
-## *Understanding Deep Learning*, chapters {INFO['chapters']}: {INFO['name'].lower()}
-
-**Transition Bio · ML Reading Group**
-
-This series works through chapters 1–8 of Simon J.D. Prince's **_Understanding Deep Learning_** (MIT Press; free at [udlbook.github.io](https://udlbook.github.io/udlbook/)) in three sessions. Each one is about **20 min of slides and 60–70 min of hands-on puzzles**. We follow the book's notation, square brackets and all: $\\mathbf{{y}} = \\mathbf{{f}}[\\mathbf{{x}}, \\boldsymbol\\phi]$.
-
-| Session | Topic | Chapters |
-|---|---|---|
-{SERIES}
-
----
-
-### 🦦 The story
-You've just joined a long-running field station in the Kalahari that studies a wild meerkat mob. The mob is about thirty animals, run by a dominant female (in meerkat society, she's in charge). The station has a lot of data and no deep-learning expert, so you're it. Every chapter sets you a new problem from the field.
-
-All datasets are **synthetic**. They're generated in this notebook so that we know the ground truth and can check your answers.
-
-### 🧭 How each part works
-| Symbol | Meaning |
-|---|---|
-| 📖 | Recap of the chapter's maths, with the equations derived properly |
-| 💻 | We build it **from scratch in NumPy** first; PyTorch only appears once you've earned it |
-| 🧩 ⭐ / ⭐⭐ / ⭐⭐⭐ | Puzzle: quick / medium / stretch. Fill in the `TODO`, then run the 🧪 check cell |
-| 🔑 | Hidden solution cell. Double-click to open it. Have a go first; it's there when you need it |
-| 🏆 | Open challenge with bronze / silver / gold targets to aim for |
-
-> **Important:** later cells use the functions you write. If you get stuck, **run the 🔑 solution cell** (you don't have to read it) so the rest of the notebook still works.
-{prev}
-### 🗺️ This session (≈ 70 min hands-on)
-| | | Suggested time |
-|---|---|---|
-{CONTENTS}
-
-⏱ **Short on time?** Skip the stretch puzzles **{INFO['stretch']}** in the room and finish them afterwards; they're good practice to finish afterwards.
-
-At the end, `progress()` shows which puzzles you've solved and which are left. It's just for you; nothing is recorded or shared.
-
-*Book figures and problem numbers are cited as e.g. "Fig 3.3" and "P3.8".*
-""")
+md(ONE_HOUR)
 
 code(r'''
 #@title 🐾 Setup: run me first! (plotting style, score keeper, referee)
@@ -140,7 +70,6 @@ plt.rcParams.update({
 
 # ---------------- progress tracker (private to you; nothing is shared) ----------------
 _SOLVED, _PEEKED, _SEEN = set(), set(), set()
-SESSION = __SESSION__
 
 def peek(pid):
     _PEEKED.add(pid)
@@ -195,4 +124,4 @@ try:
 except ImportError:
     HAS_TORCH = False
 print("Setup complete 🐾  | numpy", np.__version__, "| torch available:", HAS_TORCH)
-'''.replace('__SESSION__', str(S)), form=True)
+''', form=True)

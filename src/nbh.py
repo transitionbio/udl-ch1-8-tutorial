@@ -76,4 +76,3 @@ def build(path, title):
     }
     nbf.write(nb, path)
 
-SESSION = 1

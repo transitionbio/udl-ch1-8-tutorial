@@ -34,25 +34,14 @@ Every chapter's recap and demo plots are still in the notebook. Puzzles outside 
 
 > **Private repo / Colab access:** Colab can only open this notebook once Colab is allowed to read `transitionbio` repos: authorise GitHub in Colab, then grant *Colaboratory* access to the `transitionbio` org (github.com/settings/applications). Alternatively, download the `.ipynb` and use **File → Upload notebook** in Colab.
 
-## Extended version
-
-[`extended/`](extended/) has the full three-session course for anyone who wants more. It has 35 puzzles, every derivation, a protein-condensate capstone, and a 7–9 slide deck per session.
-
-| # | Topic | Chapters | Notebook | Slides |
-|---|---|---|---|---|
-| 1 | Models | 1–4 | [notebook](extended/notebooks/TBio_UDL_S1_Models_Ch1-4.ipynb) | [deck](extended/slides/TBio_UDL_S1_Models_Ch1-4.pptx) |
-| 2 | Losses and training | 5–6 | [notebook](extended/notebooks/TBio_UDL_S2_Losses_Training_Ch5-6.ipynb) | [deck](extended/slides/TBio_UDL_S2_Losses_Training_Ch5-6.pptx) |
-| 3 | Backprop and performance (+ capstone) | 7–8 | [notebook](extended/notebooks/TBio_UDL_S3_Backprop_Performance_Ch7-8.ipynb) | [deck](extended/slides/TBio_UDL_S3_Backprop_Performance_Ch7-8.pptx) |
-
 ## Rebuilding / editing
 
-All notebooks are generated from `src/`. Each `p*.py` file is one part of the book. `p0_intro.py` holds the intro and setup, and `build.py` has the core-path puzzle list (`CORE`).
+The notebook is generated from `src/`. Each `p*.py` file is one part of the book. `p0_intro.py` holds the intro and setup, and `build.py` has the core-path puzzle list (`CORE`).
 
 ```bash
 cd src
-python build.py ../notebooks student hour             # one-hour notebook
-python build.py ../extended/notebooks student series  # three-session notebooks
-python build.py /tmp/check test hour                  # verification build (solutions before checks)
+python build.py ../notebooks student   # the notebook
+python build.py /tmp/check test        # verification build (solutions before checks)
 python run.py /tmp/check/TBio_UDL_Ch1-8_OneHour.ipynb /tmp/check/out.ipynb   # every ✅ should print
 ```
 
@@ -60,6 +49,6 @@ Requires `nbformat` and `nbclient` to build and run, plus `numpy`, `matplotlib` 
 
 ## Credits
 
-Content follows Prince, *Understanding Deep Learning* (MIT Press, 2023; CC-BY-NC-ND), including its notation, equation and figure numbers, and selected end-of-chapter problems. The meerkat call dataset is modelled on MNIST-1D (Greydanus, 2020). All datasets are synthetic; the condensate capstone is a toy and is not Transition Bio data.
+Content follows Prince, *Understanding Deep Learning* (MIT Press, 2023; CC-BY-NC-ND), including its notation, equation and figure numbers, and selected end-of-chapter problems. The meerkat call dataset is modelled on MNIST-1D (Greydanus, 2020). All datasets are synthetic and none are Transition Bio data.
 
 Internal training material: Confidential and Proprietary, Transition Bio.

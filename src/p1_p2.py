@@ -259,19 +259,3 @@ print("The generative fit minimises HORIZONTAL errors, so its inverted line is s
       "The two only agree when the points are perfectly collinear (correlation = ±1).")
 ''')
 
-import nbh
-if nbh.SESSION != 0:
-  code(r'''
-#@title 🎛️ Optional: beat the computer by hand (sliders; needs ipywidgets, which Colab has)
-try:
-    from ipywidgets import interact, FloatSlider
-    def _play(phi0=0.0, phi1=3.0):
-        plt.figure(figsize=(5, 3.2)); plt.scatter(hours, gain, color=TB["orange"])
-        plt.plot(xx, f_linear(xx, phi0, phi1), color=TB["green"])
-        L = loss_ls(phi0, phi1, hours, gain); Lb = loss_ls(*closed_form(hours, gain), hours, gain)
-        plt.title(f"your loss {L:.1f}   vs   optimum {Lb:.1f}"); plt.show()
-    interact(_play, phi0=FloatSlider(min=-6, max=10, step=0.1, value=0),
-             phi1=FloatSlider(min=0, max=4.5, step=0.05, value=3))
-except Exception as e:
-    print("Sliders unavailable here:", e)
-''', form=True)
