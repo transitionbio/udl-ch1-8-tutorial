@@ -12,7 +12,7 @@ The notebook covers the book's maths and rebuilds each idea from scratch in NumP
 | 5–55 min | Chapter by chapter: concept slide → problem slide → solve it in the notebook → solution slide | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_Ch1-8_OneHour.ipynb) |
 | 55–60 min | Wrap-up and discussion | |
 
-The deck (38 slides) follows the notebook. Each chapter has a concept slide. Each core puzzle has a **problem slide**, which sets out the meerkat scenario in plain words and the task to code, then a **solution slide**: a plain-language explanation for non-ML scientists, followed by the maths and code. Speaker notes carry timings and hints.
+The deck (38 slides) follows the notebook. Each chapter has a concept slide. Each core puzzle has two slides. The **problem slide** opens with the meerkat scenario, then says what we're trying to do (what we have, what we want, the catch) and gives the notebook task. The **solution slide** explains the answer in plain language for non-ML scientists, then gives the maths, the code and a take-away. Speaker notes carry timings and hints.
 
 **Core path (≈ 40 min):** 10 puzzles and 2 optional challenges.
 
