@@ -8,9 +8,11 @@ The notebook covers the book's maths and rebuilds each idea from scratch in NumP
 
 | Time | What | Material |
 |---|---|---|
-| 0–12 min | Slides: one idea per chapter (10 slides) | [deck](slides/TBio_UDL_Ch1-8_OneHour.pptx) |
-| 12–55 min | Hands-on: the core puzzle path | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_Ch1-8_OneHour.ipynb) |
-| 55–60 min | Wrap-up and questions | |
+| 0–5 min | Slides: welcome and roadmap | [deck](slides/TBio_UDL_Ch1-8_OneHour.pptx) |
+| 5–55 min | Chapter by chapter: concept slide → problem slide → solve it in the notebook → solution slide | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/transitionbio/udl-ch1-8-tutorial/blob/main/notebooks/TBio_UDL_Ch1-8_OneHour.ipynb) |
+| 55–60 min | Wrap-up and discussion | |
+
+The deck (38 slides) follows the notebook. Each chapter has a concept slide. Each core puzzle has a **problem slide**, which sets out the meerkat scenario in plain words and the task to code, then a **solution slide**: a plain-language explanation for non-ML scientists, followed by the maths and code. Speaker notes carry timings and hints.
 
 **Core path (≈ 40 min):** 10 puzzles and 2 optional challenges.
 
@@ -49,6 +51,6 @@ Requires `nbformat` and `nbclient` to build and run, plus `numpy`, `matplotlib` 
 
 ## Credits
 
-Content follows Prince, *Understanding Deep Learning* (MIT Press, 2023; CC-BY-NC-ND), including its notation, equation and figure numbers, and selected end-of-chapter problems. The meerkat call dataset is modelled on MNIST-1D (Greydanus, 2020). All datasets are synthetic and none are Transition Bio data.
+Content follows Prince, *Understanding Deep Learning* (MIT Press, 2023; CC-BY-NC-ND), including its notation, equation and figure numbers, and selected end-of-chapter problems. The meerkat call dataset is modelled on MNIST-1D (Greydanus, 2020). All datasets are synthetic and none are Transition Bio data. Emoji illustrations in the deck are [Twemoji](https://github.com/jdecked/twemoji) (CC-BY 4.0).
 
 Internal training material: Confidential and Proprietary, Transition Bio.

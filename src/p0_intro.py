@@ -11,9 +11,9 @@ A one-hour, hands-on tour of chapters 1–8 of Simon J.D. Prince's **_Understand
 ### ⏱️ The hour
 | Time | What |
 |---|---|
-| 0–12 min | Slides: the big picture, one idea per chapter |
-| 12–55 min | **This notebook**: the core puzzle path below |
-| 55–60 min | Wrap-up and questions |
+| 0–5 min | Slides: welcome and roadmap |
+| 5–55 min | Chapter by chapter: a problem slide, then **this notebook** to solve it, then the solution slide |
+| 55–60 min | Wrap-up and discussion |
 
 ### 🦦 The story
 You've just joined a field station in the Kalahari that studies a wild meerkat mob. The station has a lot of data and no deep-learning expert, so you're it. All datasets are **synthetic**: they're generated right here, so every answer can be checked automatically.
